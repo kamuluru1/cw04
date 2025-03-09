@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'database_helper.dart';
 
-
 class Plan {
   int? id;
   String name;
@@ -64,6 +63,7 @@ class _PlanManagerScreenState extends State<PlanManagerScreen> {
     });
   }
 
+  // Updates an existing plan.
   void _updatePlan(Plan plan) {
     setState(() {
       int index = _plans.indexWhere((p) => p.id == plan.id);
@@ -74,6 +74,7 @@ class _PlanManagerScreenState extends State<PlanManagerScreen> {
     });
   }
 
+  // Deletes a plan.
   void _deletePlan(Plan plan) {
     setState(() {
       _plans.removeWhere((p) => p.id == plan.id);
@@ -130,7 +131,7 @@ class _PlanManagerScreenState extends State<PlanManagerScreen> {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        Text("Date: ${selectedDate.toLocal()}".split(' ')[0]),
+                        Text("Date: ${selectedDate.toLocal().toString().split(' ')[0]}"),
                         Spacer(),
                         TextButton(
                           child: Text("Select Date"),
@@ -230,7 +231,7 @@ class _PlanManagerScreenState extends State<PlanManagerScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(plan.description),
-                Text("Date: ${plan.date.toLocal()}".split(' ')[0]),
+                Text("Date: ${plan.date.toLocal().toString().split(' ')[0]}"),
                 Text("Priority: ${plan.priority}"),
               ],
             ),
@@ -318,4 +319,3 @@ class _PlanManagerScreenState extends State<PlanManagerScreen> {
     );
   }
 }
-
